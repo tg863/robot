@@ -1,0 +1,4 @@
+<launch>
+<node name="mouvement_controller" pkg="udm_project_control" type="robot_control.py" />
+
+</launch>

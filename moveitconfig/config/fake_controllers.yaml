@@ -1,0 +1,34 @@
+controller_list:
+  - name: fake_legmr_controller
+    joints:
+      - joint_shoulder_mr
+      - joint_elbow_mr
+      - joint_wrist_mr
+      - joint_end_mr
+  - name: fake_legml_controller
+    joints:
+      - joint_shoulder_ml
+      - joint_elbow_ml
+      - joint_wrist_ml
+      - joint_end_ml
+  - name: fake_legfr_controller
+    joints:
+      - joint_shoulder_fr
+      - joint_elbow_fr
+      - joint_wrist_fr
+      - joint_end_fr
+  - name: fake_legfl_controller
+    joints:
+      - joint_shoulder_fl
+      - joint_elbow_fl
+      - joint_wrist_fl
+      - joint_end_fl
+initial:  # Define initial robot poses.
+  - group: legmr
+    pose: startmr
+  - group: legml
+    pose: startml
+  - group: legfr
+    pose: startfr
+  - group: legfl
+    pose: startfl

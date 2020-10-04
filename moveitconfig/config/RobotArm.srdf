@@ -1,0 +1,347 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="RobotArm">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="legmr">
+        <joint name="joint_shoulder_mr" />
+        <joint name="joint_elbow_mr" />
+        <joint name="joint_wrist_mr" />
+        <joint name="joint_end_mr" />
+    </group>
+    <group name="legml">
+        <joint name="joint_shoulder_ml" />
+        <joint name="joint_elbow_ml" />
+        <joint name="joint_wrist_ml" />
+        <joint name="joint_end_ml" />
+    </group>
+    <group name="legfr">
+        <joint name="joint_shoulder_fr" />
+        <joint name="joint_elbow_fr" />
+        <joint name="joint_wrist_fr" />
+        <joint name="joint_end_fr" />
+    </group>
+    <group name="legfl">
+        <joint name="joint_shoulder_fl" />
+        <joint name="joint_elbow_fl" />
+        <joint name="joint_wrist_fl" />
+        <joint name="joint_end_fl" />
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="startmr" group="legmr">
+        <joint name="joint_elbow_mr" value="0.4" />
+        <joint name="joint_end_mr" value="1" />
+        <joint name="joint_shoulder_mr" value="0" />
+        <joint name="joint_wrist_mr" value="-1" />
+    </group_state>
+    <group_state name="startml" group="legml">
+        <joint name="joint_elbow_ml" value="0.4" />
+        <joint name="joint_end_ml" value="1" />
+        <joint name="joint_shoulder_ml" value="0" />
+        <joint name="joint_wrist_ml" value="-1" />
+    </group_state>
+    <group_state name="startfr" group="legfr">
+        <joint name="joint_elbow_fr" value="0.4" />
+        <joint name="joint_end_fr" value="1" />
+        <joint name="joint_shoulder_fr" value="0" />
+        <joint name="joint_wrist_fr" value="-1" />
+    </group_state>
+    <group_state name="startfl" group="legfl">
+        <joint name="joint_elbow_fl" value="0.4" />
+        <joint name="joint_end_fl" value="1" />
+        <joint name="joint_shoulder_fl" value="0" />
+        <joint name="joint_wrist_fl" value="-1" />
+    </group_state>
+    <group_state name="frontmr" group="legmr">
+        <joint name="joint_elbow_mr" value="0.1" />
+        <joint name="joint_end_mr" value="0.7" />
+        <joint name="joint_shoulder_mr" value="0" />
+        <joint name="joint_wrist_mr" value="-0.9" />
+    </group_state>
+    <group_state name="frontml" group="legml">
+        <joint name="joint_elbow_ml" value="0.1" />
+        <joint name="joint_end_ml" value="0.7" />
+        <joint name="joint_shoulder_ml" value="0" />
+        <joint name="joint_wrist_ml" value="-0.9" />
+    </group_state>
+    <group_state name="frontfr" group="legfr">
+        <joint name="joint_elbow_fr" value="0.1" />
+        <joint name="joint_end_fr" value="0.7" />
+        <joint name="joint_shoulder_fr" value="0" />
+        <joint name="joint_wrist_fr" value="-0.9" />
+    </group_state>
+    <group_state name="frontfl" group="legfl">
+        <joint name="joint_elbow_fl" value="0.1" />
+        <joint name="joint_end_fl" value="0.7" />
+        <joint name="joint_shoulder_fl" value="0" />
+        <joint name="joint_wrist_fl" value="-0.9" />
+    </group_state>
+    <group_state name="backmr" group="legmr">
+        <joint name="joint_elbow_mr" value="0.6" />
+        <joint name="joint_end_mr" value="0.7" />
+        <joint name="joint_shoulder_mr" value="0" />
+        <joint name="joint_wrist_mr" value="-0.8" />
+    </group_state>
+    <group_state name="backml" group="legml">
+        <joint name="joint_elbow_ml" value="0.6" />
+        <joint name="joint_end_ml" value="0.7" />
+        <joint name="joint_shoulder_ml" value="0" />
+        <joint name="joint_wrist_ml" value="-0.8" />
+    </group_state>
+    <group_state name="backfr" group="legfr">
+        <joint name="joint_elbow_fr" value="0.6" />
+        <joint name="joint_end_fr" value="0.7" />
+        <joint name="joint_shoulder_fr" value="0" />
+        <joint name="joint_wrist_fr" value="-0.8" />
+    </group_state>
+    <group_state name="backfl" group="legfl">
+        <joint name="joint_elbow_fl" value="0.6" />
+        <joint name="joint_end_fl" value="0.7" />
+        <joint name="joint_shoulder_fl" value="0" />
+        <joint name="joint_wrist_fl" value="-0.8" />
+    </group_state>
+    <group_state name="rightmr" group="legmr">
+        <joint name="joint_elbow_mr" value="0.1" />
+        <joint name="joint_end_mr" value="0.7" />
+        <joint name="joint_shoulder_mr" value="-1.57" />
+        <joint name="joint_wrist_mr" value="-0.9" />
+    </group_state>
+    <group_state name="rightml" group="legml">
+        <joint name="joint_elbow_ml" value="0.1" />
+        <joint name="joint_end_ml" value="0.7" />
+        <joint name="joint_shoulder_ml" value="-1.57" />
+        <joint name="joint_wrist_ml" value="-0.9" />
+    </group_state>
+    <group_state name="rightfr" group="legfr">
+        <joint name="joint_elbow_fr" value="0.1" />
+        <joint name="joint_end_fr" value="0.7" />
+        <joint name="joint_shoulder_fr" value="-1.57" />
+        <joint name="joint_wrist_fr" value="-0.9" />
+    </group_state>
+    <group_state name="rightfl" group="legfl">
+        <joint name="joint_elbow_fl" value="0.1" />
+        <joint name="joint_end_fl" value="0.7" />
+        <joint name="joint_shoulder_fl" value="-1.57" />
+        <joint name="joint_wrist_fl" value="-0.9" />
+    </group_state>
+    <group_state name="startrightmr" group="legmr">
+        <joint name="joint_elbow_mr" value="0.4" />
+        <joint name="joint_end_mr" value="1" />
+        <joint name="joint_shoulder_mr" value="-1.57" />
+        <joint name="joint_wrist_mr" value="-1" />
+    </group_state>
+    <group_state name="startrightml" group="legml">
+        <joint name="joint_elbow_ml" value="0.4" />
+        <joint name="joint_end_ml" value="1" />
+        <joint name="joint_shoulder_ml" value="-1.57" />
+        <joint name="joint_wrist_ml" value="-1" />
+    </group_state>
+    <group_state name="startrightfr" group="legfr">
+        <joint name="joint_elbow_fr" value="0.4" />
+        <joint name="joint_end_fr" value="1" />
+        <joint name="joint_shoulder_fr" value="-1.57" />
+        <joint name="joint_wrist_fr" value="-1" />
+    </group_state>
+    <group_state name="startrightfl" group="legfl">
+        <joint name="joint_elbow_fl" value="0.4" />
+        <joint name="joint_end_fl" value="1" />
+        <joint name="joint_shoulder_fl" value="-1.57" />
+        <joint name="joint_wrist_fl" value="-1" />
+    </group_state>
+    <group_state name="leftmr" group="legmr">
+        <joint name="joint_elbow_mr" value="0.6" />
+        <joint name="joint_end_mr" value="0.7" />
+        <joint name="joint_shoulder_mr" value="-1.57" />
+        <joint name="joint_wrist_mr" value="-0.8" />
+    </group_state>
+    <group_state name="leftml" group="legml">
+        <joint name="joint_elbow_ml" value="0.6" />
+        <joint name="joint_end_ml" value="0.7" />
+        <joint name="joint_shoulder_ml" value="-1.57" />
+        <joint name="joint_wrist_ml" value="-0.8" />
+    </group_state>
+    <group_state name="leftfr" group="legfr">
+        <joint name="joint_elbow_fr" value="0.6" />
+        <joint name="joint_end_fr" value="0.7" />
+        <joint name="joint_shoulder_fr" value="-1.57" />
+        <joint name="joint_wrist_fr" value="-0.8" />
+    </group_state>
+    <group_state name="leftfl" group="legfl">
+        <joint name="joint_elbow_fl" value="0.6" />
+        <joint name="joint_end_fl" value="0.7" />
+        <joint name="joint_shoulder_fl" value="-1.57" />
+        <joint name="joint_wrist_fl" value="-0.8" />
+    </group_state>
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="virtual_joint" type="fixed" parent_frame="parent_frame" child_link="base_link" />
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="base_link" link2="cylinder_link_fl" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="cylinder_link_fr" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="cylinder_link_ml" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="cylinder_link_mr" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="link_shoulder_fl" reason="Never" />
+    <disable_collisions link1="base_link" link2="link_shoulder_fr" reason="Never" />
+    <disable_collisions link1="base_link" link2="link_shoulder_ml" reason="Never" />
+    <disable_collisions link1="base_link" link2="link_shoulder_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_fl" link2="cylinder_link_fr" reason="Never" />
+    <disable_collisions link1="cylinder_link_fl" link2="cylinder_link_ml" reason="Never" />
+    <disable_collisions link1="cylinder_link_fl" link2="cylinder_link_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_fl" link2="link_elbow_fr" reason="Never" />
+    <disable_collisions link1="cylinder_link_fl" link2="link_elbow_ml" reason="Never" />
+    <disable_collisions link1="cylinder_link_fl" link2="link_elbow_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_fl" link2="link_end_fr" reason="Never" />
+    <disable_collisions link1="cylinder_link_fl" link2="link_end_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_fl" link2="link_shoulder_fl" reason="Adjacent" />
+    <disable_collisions link1="cylinder_link_fl" link2="link_shoulder_fr" reason="Never" />
+    <disable_collisions link1="cylinder_link_fl" link2="link_shoulder_ml" reason="Never" />
+    <disable_collisions link1="cylinder_link_fl" link2="link_shoulder_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_fl" link2="link_wrist_fr" reason="Never" />
+    <disable_collisions link1="cylinder_link_fl" link2="link_wrist_ml" reason="Never" />
+    <disable_collisions link1="cylinder_link_fl" link2="link_wrist_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_fr" link2="cylinder_link_ml" reason="Never" />
+    <disable_collisions link1="cylinder_link_fr" link2="cylinder_link_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_fr" link2="link_elbow_fl" reason="Never" />
+    <disable_collisions link1="cylinder_link_fr" link2="link_elbow_ml" reason="Never" />
+    <disable_collisions link1="cylinder_link_fr" link2="link_elbow_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_fr" link2="link_end_fl" reason="Never" />
+    <disable_collisions link1="cylinder_link_fr" link2="link_end_ml" reason="Never" />
+    <disable_collisions link1="cylinder_link_fr" link2="link_shoulder_fl" reason="Never" />
+    <disable_collisions link1="cylinder_link_fr" link2="link_shoulder_fr" reason="Adjacent" />
+    <disable_collisions link1="cylinder_link_fr" link2="link_shoulder_ml" reason="Never" />
+    <disable_collisions link1="cylinder_link_fr" link2="link_shoulder_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_fr" link2="link_wrist_fl" reason="Never" />
+    <disable_collisions link1="cylinder_link_fr" link2="link_wrist_ml" reason="Never" />
+    <disable_collisions link1="cylinder_link_fr" link2="link_wrist_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_ml" link2="cylinder_link_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_ml" link2="link_elbow_fl" reason="Never" />
+    <disable_collisions link1="cylinder_link_ml" link2="link_elbow_fr" reason="Never" />
+    <disable_collisions link1="cylinder_link_ml" link2="link_elbow_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_ml" link2="link_end_fl" reason="Never" />
+    <disable_collisions link1="cylinder_link_ml" link2="link_end_fr" reason="Never" />
+    <disable_collisions link1="cylinder_link_ml" link2="link_end_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_ml" link2="link_shoulder_fl" reason="Never" />
+    <disable_collisions link1="cylinder_link_ml" link2="link_shoulder_fr" reason="Never" />
+    <disable_collisions link1="cylinder_link_ml" link2="link_shoulder_ml" reason="Adjacent" />
+    <disable_collisions link1="cylinder_link_ml" link2="link_shoulder_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_ml" link2="link_wrist_fl" reason="Never" />
+    <disable_collisions link1="cylinder_link_ml" link2="link_wrist_fr" reason="Never" />
+    <disable_collisions link1="cylinder_link_ml" link2="link_wrist_mr" reason="Never" />
+    <disable_collisions link1="cylinder_link_mr" link2="link_elbow_fl" reason="Never" />
+    <disable_collisions link1="cylinder_link_mr" link2="link_elbow_fr" reason="Never" />
+    <disable_collisions link1="cylinder_link_mr" link2="link_elbow_ml" reason="Never" />
+    <disable_collisions link1="cylinder_link_mr" link2="link_end_fl" reason="Never" />
+    <disable_collisions link1="cylinder_link_mr" link2="link_end_fr" reason="Never" />
+    <disable_collisions link1="cylinder_link_mr" link2="link_end_ml" reason="Never" />
+    <disable_collisions link1="cylinder_link_mr" link2="link_shoulder_fl" reason="Never" />
+    <disable_collisions link1="cylinder_link_mr" link2="link_shoulder_fr" reason="Never" />
+    <disable_collisions link1="cylinder_link_mr" link2="link_shoulder_ml" reason="Never" />
+    <disable_collisions link1="cylinder_link_mr" link2="link_shoulder_mr" reason="Adjacent" />
+    <disable_collisions link1="cylinder_link_mr" link2="link_wrist_fl" reason="Never" />
+    <disable_collisions link1="cylinder_link_mr" link2="link_wrist_fr" reason="Never" />
+    <disable_collisions link1="cylinder_link_mr" link2="link_wrist_ml" reason="Never" />
+    <disable_collisions link1="link_elbow_fl" link2="link_elbow_fr" reason="Never" />
+    <disable_collisions link1="link_elbow_fl" link2="link_elbow_ml" reason="Never" />
+    <disable_collisions link1="link_elbow_fl" link2="link_elbow_mr" reason="Never" />
+    <disable_collisions link1="link_elbow_fl" link2="link_end_fr" reason="Never" />
+    <disable_collisions link1="link_elbow_fl" link2="link_end_ml" reason="Never" />
+    <disable_collisions link1="link_elbow_fl" link2="link_end_mr" reason="Never" />
+    <disable_collisions link1="link_elbow_fl" link2="link_shoulder_fl" reason="Adjacent" />
+    <disable_collisions link1="link_elbow_fl" link2="link_shoulder_fr" reason="Never" />
+    <disable_collisions link1="link_elbow_fl" link2="link_shoulder_ml" reason="Never" />
+    <disable_collisions link1="link_elbow_fl" link2="link_shoulder_mr" reason="Never" />
+    <disable_collisions link1="link_elbow_fl" link2="link_wrist_fl" reason="Adjacent" />
+    <disable_collisions link1="link_elbow_fl" link2="link_wrist_fr" reason="Never" />
+    <disable_collisions link1="link_elbow_fl" link2="link_wrist_ml" reason="Never" />
+    <disable_collisions link1="link_elbow_fl" link2="link_wrist_mr" reason="Never" />
+    <disable_collisions link1="link_elbow_fr" link2="link_elbow_ml" reason="Never" />
+    <disable_collisions link1="link_elbow_fr" link2="link_elbow_mr" reason="Never" />
+    <disable_collisions link1="link_elbow_fr" link2="link_end_fl" reason="Never" />
+    <disable_collisions link1="link_elbow_fr" link2="link_end_ml" reason="Never" />
+    <disable_collisions link1="link_elbow_fr" link2="link_shoulder_fl" reason="Never" />
+    <disable_collisions link1="link_elbow_fr" link2="link_shoulder_fr" reason="Adjacent" />
+    <disable_collisions link1="link_elbow_fr" link2="link_shoulder_ml" reason="Never" />
+    <disable_collisions link1="link_elbow_fr" link2="link_shoulder_mr" reason="Never" />
+    <disable_collisions link1="link_elbow_fr" link2="link_wrist_fl" reason="Never" />
+    <disable_collisions link1="link_elbow_fr" link2="link_wrist_fr" reason="Adjacent" />
+    <disable_collisions link1="link_elbow_fr" link2="link_wrist_ml" reason="Never" />
+    <disable_collisions link1="link_elbow_fr" link2="link_wrist_mr" reason="Never" />
+    <disable_collisions link1="link_elbow_ml" link2="link_elbow_mr" reason="Never" />
+    <disable_collisions link1="link_elbow_ml" link2="link_end_fl" reason="Never" />
+    <disable_collisions link1="link_elbow_ml" link2="link_end_fr" reason="Never" />
+    <disable_collisions link1="link_elbow_ml" link2="link_end_mr" reason="Never" />
+    <disable_collisions link1="link_elbow_ml" link2="link_shoulder_fl" reason="Never" />
+    <disable_collisions link1="link_elbow_ml" link2="link_shoulder_fr" reason="Never" />
+    <disable_collisions link1="link_elbow_ml" link2="link_shoulder_ml" reason="Adjacent" />
+    <disable_collisions link1="link_elbow_ml" link2="link_shoulder_mr" reason="Never" />
+    <disable_collisions link1="link_elbow_ml" link2="link_wrist_fl" reason="Never" />
+    <disable_collisions link1="link_elbow_ml" link2="link_wrist_fr" reason="Never" />
+    <disable_collisions link1="link_elbow_ml" link2="link_wrist_ml" reason="Adjacent" />
+    <disable_collisions link1="link_elbow_ml" link2="link_wrist_mr" reason="Never" />
+    <disable_collisions link1="link_elbow_mr" link2="link_end_fl" reason="Never" />
+    <disable_collisions link1="link_elbow_mr" link2="link_end_ml" reason="Never" />
+    <disable_collisions link1="link_elbow_mr" link2="link_shoulder_fl" reason="Never" />
+    <disable_collisions link1="link_elbow_mr" link2="link_shoulder_fr" reason="Never" />
+    <disable_collisions link1="link_elbow_mr" link2="link_shoulder_ml" reason="Never" />
+    <disable_collisions link1="link_elbow_mr" link2="link_shoulder_mr" reason="Adjacent" />
+    <disable_collisions link1="link_elbow_mr" link2="link_wrist_fl" reason="Never" />
+    <disable_collisions link1="link_elbow_mr" link2="link_wrist_fr" reason="Never" />
+    <disable_collisions link1="link_elbow_mr" link2="link_wrist_ml" reason="Never" />
+    <disable_collisions link1="link_elbow_mr" link2="link_wrist_mr" reason="Adjacent" />
+    <disable_collisions link1="link_end_fl" link2="link_end_fr" reason="Never" />
+    <disable_collisions link1="link_end_fl" link2="link_end_mr" reason="Never" />
+    <disable_collisions link1="link_end_fl" link2="link_shoulder_fr" reason="Never" />
+    <disable_collisions link1="link_end_fl" link2="link_shoulder_ml" reason="Never" />
+    <disable_collisions link1="link_end_fl" link2="link_shoulder_mr" reason="Never" />
+    <disable_collisions link1="link_end_fl" link2="link_wrist_fl" reason="Adjacent" />
+    <disable_collisions link1="link_end_fl" link2="link_wrist_fr" reason="Never" />
+    <disable_collisions link1="link_end_fl" link2="link_wrist_ml" reason="Never" />
+    <disable_collisions link1="link_end_fl" link2="link_wrist_mr" reason="Never" />
+    <disable_collisions link1="link_end_fr" link2="link_end_ml" reason="Never" />
+    <disable_collisions link1="link_end_fr" link2="link_shoulder_fl" reason="Never" />
+    <disable_collisions link1="link_end_fr" link2="link_shoulder_ml" reason="Never" />
+    <disable_collisions link1="link_end_fr" link2="link_shoulder_mr" reason="Never" />
+    <disable_collisions link1="link_end_fr" link2="link_wrist_fl" reason="Never" />
+    <disable_collisions link1="link_end_fr" link2="link_wrist_fr" reason="Adjacent" />
+    <disable_collisions link1="link_end_fr" link2="link_wrist_ml" reason="Never" />
+    <disable_collisions link1="link_end_ml" link2="link_shoulder_fl" reason="Never" />
+    <disable_collisions link1="link_end_ml" link2="link_shoulder_fr" reason="Never" />
+    <disable_collisions link1="link_end_ml" link2="link_shoulder_mr" reason="Never" />
+    <disable_collisions link1="link_end_ml" link2="link_wrist_fr" reason="Never" />
+    <disable_collisions link1="link_end_ml" link2="link_wrist_ml" reason="Adjacent" />
+    <disable_collisions link1="link_end_ml" link2="link_wrist_mr" reason="Never" />
+    <disable_collisions link1="link_end_mr" link2="link_shoulder_fl" reason="Never" />
+    <disable_collisions link1="link_end_mr" link2="link_shoulder_fr" reason="Never" />
+    <disable_collisions link1="link_end_mr" link2="link_shoulder_ml" reason="Never" />
+    <disable_collisions link1="link_end_mr" link2="link_wrist_fl" reason="Never" />
+    <disable_collisions link1="link_end_mr" link2="link_wrist_ml" reason="Never" />
+    <disable_collisions link1="link_end_mr" link2="link_wrist_mr" reason="Adjacent" />
+    <disable_collisions link1="link_shoulder_fl" link2="link_shoulder_fr" reason="Never" />
+    <disable_collisions link1="link_shoulder_fl" link2="link_shoulder_ml" reason="Never" />
+    <disable_collisions link1="link_shoulder_fl" link2="link_shoulder_mr" reason="Never" />
+    <disable_collisions link1="link_shoulder_fl" link2="link_wrist_fr" reason="Never" />
+    <disable_collisions link1="link_shoulder_fl" link2="link_wrist_ml" reason="Never" />
+    <disable_collisions link1="link_shoulder_fl" link2="link_wrist_mr" reason="Never" />
+    <disable_collisions link1="link_shoulder_fr" link2="link_shoulder_ml" reason="Never" />
+    <disable_collisions link1="link_shoulder_fr" link2="link_shoulder_mr" reason="Never" />
+    <disable_collisions link1="link_shoulder_fr" link2="link_wrist_fl" reason="Never" />
+    <disable_collisions link1="link_shoulder_fr" link2="link_wrist_ml" reason="Never" />
+    <disable_collisions link1="link_shoulder_fr" link2="link_wrist_mr" reason="Never" />
+    <disable_collisions link1="link_shoulder_ml" link2="link_shoulder_mr" reason="Never" />
+    <disable_collisions link1="link_shoulder_ml" link2="link_wrist_fl" reason="Never" />
+    <disable_collisions link1="link_shoulder_ml" link2="link_wrist_fr" reason="Never" />
+    <disable_collisions link1="link_shoulder_ml" link2="link_wrist_mr" reason="Never" />
+    <disable_collisions link1="link_shoulder_mr" link2="link_wrist_fl" reason="Never" />
+    <disable_collisions link1="link_shoulder_mr" link2="link_wrist_fr" reason="Never" />
+    <disable_collisions link1="link_shoulder_mr" link2="link_wrist_ml" reason="Never" />
+    <disable_collisions link1="link_wrist_fl" link2="link_wrist_fr" reason="Never" />
+    <disable_collisions link1="link_wrist_fl" link2="link_wrist_mr" reason="Never" />
+    <disable_collisions link1="link_wrist_fr" link2="link_wrist_ml" reason="Never" />
+    <disable_collisions link1="link_wrist_fr" link2="link_wrist_mr" reason="Never" />
+    <disable_collisions link1="link_wrist_ml" link2="link_wrist_mr" reason="Never" />
+</robot>
